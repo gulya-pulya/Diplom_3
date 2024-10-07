@@ -66,13 +66,13 @@ public class ConstructorPage {
     @Step("Wait for sauce section scroll")
     public void waitSauceSectionActive() throws InterruptedException {
         new WebDriverWait(driver, 3)
-                .until(ExpectedConditions.visibilityOfElementLocated(sauceSection));
+                .until(ExpectedConditions.visibilityOfElementLocated(sauceSectionTitle));
     }
 
     @Step("Wait for bun filling scroll")
     public void waitFillingSectionActive() throws InterruptedException {
         new WebDriverWait(driver, 3)
-                .until(ExpectedConditions.visibilityOfElementLocated(fillingSection));
+                .until(ExpectedConditions.visibilityOfElementLocated(fillingSectionTitle));
     }
 
     @Step("Wait for constructor form load")

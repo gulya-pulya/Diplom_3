@@ -4,6 +4,7 @@ import io.qameta.allure.Step;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import ru.yandex.practicum.browser.Browser;
@@ -16,11 +17,14 @@ public class RegistrationTest {
 
     private final WebDriver driver = Browser.getWebDriverFromEnv();
 
+    @Before
+    public void init() {
+        driver.get("https://stellarburgers.nomoreparties.site/register");
+    }
+
     @Test
     @DisplayName("Successfully registration")
     public void testSuccessfullyRegistration() throws InterruptedException {
-        driver.get("https://stellarburgers.nomoreparties.site/register");
-
         String loginPageUrl = "https://stellarburgers.nomoreparties.site/login";
 
         String name = UUID.randomUUID().toString();
@@ -42,8 +46,6 @@ public class RegistrationTest {
     @Test
     @DisplayName("Registration should show error if password is less than 6 symbol")
     public void testShowErrorOnSmallPassword() throws InterruptedException {
-        driver.get("https://stellarburgers.nomoreparties.site/register");
-
         String name = UUID.randomUUID().toString();
         String email = UUID.randomUUID() + "@ya.ru";
         String password = "12345";
@@ -69,6 +71,6 @@ public class RegistrationTest {
 
     @After
     public void teardown() {
-        //driver.quit();
+        driver.quit();
     }
 }

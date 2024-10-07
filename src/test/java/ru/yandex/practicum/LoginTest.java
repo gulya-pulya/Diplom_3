@@ -8,7 +8,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import ru.yandex.practicum.browser.Browser;
 import ru.yandex.practicum.dto.request.UserCreateRequest;
 import ru.yandex.practicum.dto.request.UserLoginRequest;

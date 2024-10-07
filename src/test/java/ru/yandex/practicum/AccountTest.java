@@ -8,14 +8,12 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import ru.yandex.practicum.browser.Browser;
 import ru.yandex.practicum.dto.request.UserCreateRequest;
 import ru.yandex.practicum.dto.request.UserLoginRequest;
 import ru.yandex.practicum.pageobject.AccountPage;
 import ru.yandex.practicum.pageobject.ConstructorPage;
 import ru.yandex.practicum.pageobject.LoginPage;
-import ru.yandex.practicum.pageobject.RegistrationPage;
 import ru.yandex.practicum.util.UserUtils;
 
 import java.util.UUID;
@@ -30,6 +28,7 @@ public class AccountTest {
 
     @Before
     public void initialize() {
+        driver.get("https://stellarburgers.nomoreparties.site");
         RestAssured.baseURI = "https://stellarburgers.nomoreparties.site";
         UserUtils.createUser(new UserCreateRequest(name, email, password));
     }
@@ -37,8 +36,6 @@ public class AccountTest {
     @Test
     @DisplayName("Account link should show login form if user don't login")
     public void testAccountLinkShouldShowLoginFormIfUserDontLogin() throws InterruptedException {
-        driver.get("https://stellarburgers.nomoreparties.site");
-
         String loginPageUrl = "https://stellarburgers.nomoreparties.site/login";
 
         ConstructorPage constructorPage = new ConstructorPage(driver);
@@ -50,13 +47,9 @@ public class AccountTest {
         checkUrlChange(loginPageUrl, driver.getCurrentUrl());
     }
 
-    //TODO проверять также в яндекс браузере
-
     @Test
     @DisplayName("Account link should show account page if user login")
     public void testAccountLinkShouldShowAccountPageIfUserLogin() throws InterruptedException {
-        driver.get("https://stellarburgers.nomoreparties.site");
-
         ConstructorPage constructorPage = new ConstructorPage(driver);
         constructorPage.waitPageLoad();
         constructorPage.clickOnAccountLink();
@@ -80,8 +73,6 @@ public class AccountTest {
     @DisplayName("User should successfully logout")
     public void testUserShouldSuccessfullyLogout() throws InterruptedException {
         String loginPageUrl = "https://stellarburgers.nomoreparties.site/login";
-
-        driver.get("https://stellarburgers.nomoreparties.site");
 
         ConstructorPage constructorPage = new ConstructorPage(driver);
         constructorPage.waitPageLoad();
@@ -110,8 +101,6 @@ public class AccountTest {
     public void testUserShouldOpenConstructorPageFromAccountPage() throws InterruptedException {
         String constructorPageUrl = "https://stellarburgers.nomoreparties.site/";
 
-        driver.get("https://stellarburgers.nomoreparties.site");
-
         ConstructorPage constructorPage = new ConstructorPage(driver);
         constructorPage.waitPageLoad();
         constructorPage.clickOnAccountLink();
@@ -138,8 +127,6 @@ public class AccountTest {
     @DisplayName("User should open constructor page from account page on logo click")
     public void testUserShouldOpenConstructorPageFromAccountPageOnLogoClick() throws InterruptedException {
         String constructorPageUrl = "https://stellarburgers.nomoreparties.site/";
-
-        driver.get("https://stellarburgers.nomoreparties.site");
 
         ConstructorPage constructorPage = new ConstructorPage(driver);
         constructorPage.waitPageLoad();
