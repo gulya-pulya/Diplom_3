@@ -16,15 +16,15 @@ public class ConstructorPage {
 
     private final By loginLink = By.xpath("//*[@id=\"root\"]/div/main/section[2]/div/button");
 
-    private final By bunSectionTitle = By.xpath("//*[@id=\"root\"]/div/main/section[1]/div[2]/h2[1]");
+    private final By bunTab = By.xpath("//*[@id=\"root\"]/div/main/section[1]/div[1]/div[1]");
 
     private final By bunSection = By.xpath("//*[@id=\"root\"]/div/main/section[1]/div[1]/div[1]");
 
-    private final By sauceSectionTitle = By.xpath("//*[@id=\"root\"]/div/main/section[1]/div[2]/h2[2]");
+    private final By sauceTab = By.xpath("//*[@id=\"root\"]/div/main/section[1]/div[1]/div[2]");
 
     private final By sauceSection = By.xpath("//*[@id=\"root\"]/div/main/section[1]/div[1]/div[2]");
 
-    private final By fillingSectionTitle = By.xpath("//*[@id=\"root\"]/div/main/section[1]/div[2]/h2[3]");
+    private final By fillingTab = By.xpath("//*[@id=\"root\"]/div/main/section[1]/div[1]/div[3]");
 
     private final By fillingSection = By.xpath("//*[@id=\"root\"]/div/main/section[1]/div[1]/div[3]");
 
@@ -60,19 +60,19 @@ public class ConstructorPage {
     @Step("Wait for bun section scroll")
     public void waitBunSectionActive() throws InterruptedException {
         new WebDriverWait(driver, 3)
-                .until(ExpectedConditions.visibilityOfElementLocated(bunSectionTitle));
+                .until(ExpectedConditions.attributeContains(bunTab, "class", "tab_tab_type_current__2BEPc"));
     }
 
     @Step("Wait for sauce section scroll")
     public void waitSauceSectionActive() throws InterruptedException {
         new WebDriverWait(driver, 3)
-                .until(ExpectedConditions.visibilityOfElementLocated(sauceSectionTitle));
+                .until(ExpectedConditions.attributeContains(sauceTab, "class", "tab_tab_type_current__2BEPc"));
     }
 
     @Step("Wait for bun filling scroll")
     public void waitFillingSectionActive() throws InterruptedException {
         new WebDriverWait(driver, 3)
-                .until(ExpectedConditions.visibilityOfElementLocated(fillingSectionTitle));
+                .until(ExpectedConditions.attributeContains(fillingTab, "class", "tab_tab_type_current__2BEPc"));
     }
 
     @Step("Wait for constructor form load")
